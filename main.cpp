@@ -119,3 +119,11 @@ void enterCustomer(Customers *person,int here)
         }
     }
 }
+
+//I realize I only made this because it was in the example code
+//But it makes it useful to see customer info. Takes Customer objects.
+void displayCustomer(Customers *person)
+{
+    cout << "This customer paid " << person->paid << "$\n";
+    cout << ""
+}
