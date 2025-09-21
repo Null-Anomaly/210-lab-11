@@ -14,39 +14,40 @@ struct Customers
     bool member;
     string item;
     double paid;
-    int* phone;
+    int* visits;
     string name;
 
     ~Customers()
     {
-        if(phone)
+        if(visits)
         {
-            delete[] phone;
+            delete[] visits;
         }
-        phone = nullptr;
+        visits = nullptr;
     }
 };
 
-void enterCustomer(Customers *);
+void enterCustomer(Customers *,int);
 void displayCustomer();
 
 int main()
 {
-    //The randomness for however many people come into a store
+    //The randomness for however many people come into a store and how often
     srand (time(NULL));
     const int folks = rand() % 5 + 1;
+    const int arrive = rand() % 5 + 1;
 
     Customers *list = new Customers[folks];
 
     for(int i = 0; i < folks; i++)
     {
-        enterCustomer(&list[i]);
+        enterCustomer(&list[i],arrive);
     }
 
     return 0;
 }
 
-void enterCustomer(Customers *person)
+void enterCustomer(Customers *person,int here)
 {
     //For figuring out what they bought
     cout << "What did they buy from gamestop?: ";
@@ -78,11 +79,11 @@ void enterCustomer(Customers *person)
         }
         if(check == "y")
         {
-        person->member = true;
+            person->member = true;
         }
         if(check == "n")
         {
-        person->member = false;
+            person->member = false;
         }
     }
     
@@ -90,7 +91,11 @@ void enterCustomer(Customers *person)
     if(person->member == false)
     {
         person->name = "blank";
-        person->
+        person->visits = new int[here];
+        for(int i = 0; i < here; i++)
+        {
+            cin >> person->visits[0];
+        }
     }
     else
     {
