@@ -28,7 +28,7 @@ struct Customers
 };
 
 void enterCustomer(Customers *,int);
-void displayCustomer();
+void displayCustomer(Customers*);
 
 int main()
 {
@@ -42,6 +42,7 @@ int main()
     for(int i = 0; i < folks; i++)
     {
         enterCustomer(&list[i],arrive);
+        displayCustomer(&list[i]);
     }
 
     return 0;
@@ -58,7 +59,6 @@ void enterCustomer(Customers *person,int here)
     //For entering how much money they paid
     cout << "How much did they spend on it?: ";
     cin >> person->paid;
-
 
     //The porition of code for determining membership
     string check = " ";
@@ -104,11 +104,18 @@ void enterCustomer(Customers *person,int here)
         cout << "What is this member's name?: ";
         cin >> person->name;
         person->visits = new int[here];
+        int check = 0;
         cout << "Please list all dates they have visited (mmddyyyy)";
         for(int i = 0; i < here; i++)
         {
             cout << "Date " << i << ": ";
-            cin >> person->visits[i];
+            cin >> check;
+            while(check < 1010000 || check > 12319999)
+            {
+                cout << "Please input a valid date: ";
+                cin >> check;
+            }
+            person->visits[i] = check;
         }
     }
 }
