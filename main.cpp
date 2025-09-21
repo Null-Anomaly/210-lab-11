@@ -27,7 +27,7 @@ struct Customers
     }
 };
 
-void enterCustomer();
+void enterCustomer(Customers *);
 void displayCustomer();
 
 int main()
@@ -40,8 +40,39 @@ int main()
 
     for(int i = 0; i < folks; i++)
     {
-        
+        enterCustomer(&list[i]);
     }
 
     return 0;
+}
+
+void enterCustomer(Customers *person)
+{
+    string check = " ";
+    cout << "Is this gamestop customer a member? (Enter y or n): ";
+    cin >> check;
+    if(check == "y")
+    {
+        person->member = true;
+    }
+    else if(check == "n")
+    {
+        person->member = false;
+    }
+    else
+    {
+        while(check != "y" && check != "n")
+        {
+            cout << "Please select y or n: ";
+            cin >> check;
+        }
+        if(check == "y")
+        {
+        person->member = true;
+        }
+        if(check == "n")
+        {
+        person->member = false;
+        }
+    }
 }
