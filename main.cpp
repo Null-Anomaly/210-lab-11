@@ -1,4 +1,4 @@
-/*COMSC 210 | Lawrence Bryant | Lab 11
+/*COMSC 210  | Lab 11 | Lawrence Bryant
 IDE used: VSC*/
 #include <iostream>
 #include <stdio.h>      
@@ -34,8 +34,8 @@ int main()
 {
     //The randomness for however many people come into a store and how often
     srand (time(NULL));
-    const int folks = rand() % 5 + 1;
-    const int arrive = rand() % 5 + 1;
+    const int folks = rand() % 3 + 1;
+    const int arrive = rand() % 3 + 1;
 
     Customers *list = new Customers[folks];
 
@@ -47,6 +47,8 @@ int main()
     return 0;
 }
 
+//Function for entry of customer data
+//Takes a person object and an integer as arguments.
 void enterCustomer(Customers *person,int here)
 {
     //For figuring out what they bought
@@ -94,11 +96,19 @@ void enterCustomer(Customers *person,int here)
         person->visits = new int[here];
         for(int i = 0; i < here; i++)
         {
-            cin >> person->visits[0];
+            person->visits[i] = 0;
         }
     }
     else
     {
-
+        cout << "What is this member's name?: ";
+        cin >> person->name;
+        person->visits = new int[here];
+        cout << "Please list all dates they have visited (mmddyyyy)";
+        for(int i = 0; i < here; i++)
+        {
+            cout << "Date " << i << ": ";
+            cin >> person->visits[i];
+        }
     }
 }
