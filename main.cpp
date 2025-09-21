@@ -48,6 +48,11 @@ int main()
 
 void enterCustomer(Customers *person)
 {
+    //For entering how much money they paid
+    cout << "How much did they spend at gamestop?: ";
+    cin >> person->paid;
+
+    //The porition of code for determining membership
     string check = " ";
     cout << "Is this gamestop customer a member? (Enter y or n): ";
     cin >> check;
@@ -74,5 +79,15 @@ void enterCustomer(Customers *person)
         {
         person->member = false;
         }
+    }
+    
+    //From here, it will auto-fill if it's false and manual fill if true
+    if(person->member == false)
+    {
+
+    }
+    else
+    {
+        
     }
 }
