@@ -28,7 +28,7 @@ struct Customers
 };
 
 void enterCustomer(Customers *,int);
-void displayCustomer(Customers*);
+void displayCustomer(Customers*,int);
 
 int main()
 {
@@ -42,7 +42,7 @@ int main()
     for(int i = 0; i < folks; i++)
     {
         enterCustomer(&list[i],arrive);
-        displayCustomer(&list[i]);
+        displayCustomer(&list[i],arrive);
     }
 
     return 0;
@@ -122,8 +122,21 @@ void enterCustomer(Customers *person,int here)
 
 //I realize I only made this because it was in the example code
 //But it makes it useful to see customer info. Takes Customer objects.
-void displayCustomer(Customers *person)
+void displayCustomer(Customers *person,int here)
 {
     cout << "This customer paid " << person->paid << "$\n";
-    cout << ""
+    cout << "They bought a " << person->item << "\n";
+    if(person->member ==false)
+    {
+        cout << "This person is not a member of the store.";
+    }
+    else
+    {
+        cout << "This person has a store membership\n";
+        cout << "Their name is: " << person->name <<"\n";
+        for(int i = 0; i < here; i++)
+        {
+            cout << "They visited on: " << person->visits[i];
+        }
+    }
 }
