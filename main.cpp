@@ -27,8 +27,11 @@ struct Customers
     }
 };
 
+//Function initialization
 void enterCustomer(Customers *,int);
 void displayCustomer(Customers*,int);
+
+//The main
 
 int main()
 {
@@ -42,6 +45,11 @@ int main()
     for(int i = 0; i < folks; i++)
     {
         enterCustomer(&list[i],arrive);
+        displayCustomer(&list[i],arrive);
+    }
+
+      for(int i = 0; i < folks; i++)
+    {
         displayCustomer(&list[i],arrive);
     }
 
@@ -128,7 +136,7 @@ void displayCustomer(Customers *person,int here)
     cout << "They bought a " << person->item << "\n";
     if(person->member ==false)
     {
-        cout << "This person is not a member of the store.";
+        cout << "This person is not a member of the store.\n";
     }
     else
     {
@@ -136,7 +144,8 @@ void displayCustomer(Customers *person,int here)
         cout << "Their name is: " << person->name <<"\n";
         for(int i = 0; i < here; i++)
         {
-            cout << "They visited on: " << person->visits[i];
+            cout << "They visited on: " << person->visits[i] <<", ";
         }
     }
+    cout << "\n";
 }
